@@ -164,7 +164,7 @@ erDiagram
     FACULTY ||--o{ COURSE_SECTION : teaches
 
     COURSE_SECTION {
-        string Course_ID PK_FK
+        string Course_ID PK "FK to Course"
         string Section_ID PK
         string Semester PK
         string Academic_Year PK
@@ -172,11 +172,11 @@ erDiagram
     }
 
     ENROLLMENT {
-        string Roll_Number PK_FK
-        string Course_ID PK_FK
-        string Section_ID PK_FK
-        string Semester PK_FK
-        string Academic_Year PK_FK
+        string Roll_Number PK "FK to Student"
+        string Course_ID PK "FK to Course_Section"
+        string Section_ID PK
+        string Semester PK
+        string Academic_Year PK
         date Enrollment_Date
         string Grade
         decimal Attendance_Percentage
@@ -193,8 +193,8 @@ erDiagram
     }
 
     PROJECT_PARTICIPANT {
-        string Project_ID PK_FK
-        string Person_ID PK_FK
+        string Project_ID PK "FK to Research_Project"
+        string Person_ID PK "FK to Person"
         string Role
         date Joining_Date
         decimal Percentage_Contribution
@@ -211,8 +211,8 @@ erDiagram
     }
 
     PUBLICATION_AUTHOR {
-        string DOI PK_FK
-        string Person_ID PK_FK
+        string DOI PK "FK to Publication"
+        string Person_ID PK "FK to Person"
         int Authorship_Order
     }
 
@@ -227,7 +227,7 @@ erDiagram
     BOOK_COPY ||--o{ BORROW_RECORD : loaned_in
     PERSON ||--o{ BORROW_RECORD : borrows
     BOOK_COPY {
-        string ISBN PK_FK
+        string ISBN PK "FK to Book"
         int Copy_Number PK
         string Rack_Location
         string Current_Status
@@ -254,7 +254,7 @@ erDiagram
     HOSTEL_ROOM ||--o{ ROOM_ALLOCATION : allocated_in
     STUDENT ||--o{ ROOM_ALLOCATION : stays_in
     HOSTEL_ROOM {
-        string Hostel_ID PK_FK
+        string Hostel_ID PK "FK to Hostel"
         string Room_Number PK
         int Capacity
     }
@@ -283,8 +283,8 @@ erDiagram
     }
 
     PRESCRIBED_MEDICINE {
-        int Visit_ID PK_FK
-        string Medicine_ID PK_FK
+        int Visit_ID PK "FK to Medical_Consultation"
+        string Medicine_ID PK "FK to Medicine"
         string Dosage
         string Instructions
     }
